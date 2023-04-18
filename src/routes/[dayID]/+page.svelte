@@ -31,6 +31,7 @@
 									For projects you want to scale easily.
 									<b>$25/month + Add-ons</b>
 								</p>
+								<p />
 							</div>
 							<span class="icon-lightning-bolt u-margin-inline-start-auto" aria-hidden="true" />
 						</div>
