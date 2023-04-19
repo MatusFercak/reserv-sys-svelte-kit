@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { daysConst, monthNames } from '../lib/constant';
 	import { CalendarGenerator } from '$lib/calendarGenerator';
+	import { AppwriteServices } from '$lib/appwrite';
+	import { currentDay } from '$lib/stores';
 	let month = new Date().getMonth();
 	let year = new Date().getFullYear();
 	let days: any = CalendarGenerator.getCalendar(year, month);
+	let dayToShow: any;
 
 	function nextMonth() {
 		month += 1;
@@ -22,6 +25,9 @@
 
 	$: if (month) {
 		days = CalendarGenerator.getCalendar(year, month);
+	}
+	$: if (dayToShow) {
+		currentDay.set(dayToShow);
 	}
 </script>
 
@@ -67,8 +73,19 @@
 			{/each}
 			{#each days as day}
 				<li>
-					<a href="/{day.dayID}">
-						<div class="card {day.inCurrentMonth ? 'active' : ''}">
+					<a
+						on:click={() => {
+							dayToShow = day;
+						}}
+						href="/{day.dayID}"
+					>
+						<div
+							class="card {day.inCurrentMonth && day.past
+								? 'active'
+								: day.inCurrentMonth
+								? 'past'
+								: 'not-active '}"
+						>
 							<h5 class="eyebrow-heading-2">
 								<b class={day.inCurrentMonth ? 'nameDay' : ''}>{day.dayNumber}</b>
 							</h5>
@@ -87,8 +104,14 @@
 	.pink-body {
 		background-color: hsl(var(--color-primary-300));
 	}
+	.not-active {
+		background-color: hsl(var(--color-neutral-500));
+	}
 	.active {
 		background-color: hsl(var(--color-neutral-200));
+	}
+	.past {
+		background-color: hsl(var(--color-neutral-300));
 	}
 	.active:hover {
 		background-color: hsl(var(--color-neutral-150));
