@@ -1,6 +1,7 @@
 import { Client, Account, Databases, Query } from 'appwrite';
 import { writable } from 'svelte/store';
-import { currentAccount } from '$lib/stores';
+import { currentAccount, path } from '$lib/stores';
+import { page } from '$app/stores';
 
 const client = new Client();
 const account = new Account(client);
@@ -10,7 +11,12 @@ client.setEndpoint('https://cloud.appwrite.io/v1').setProject('reserv-system');
 
 export const AppwriteServices = {
 	login: async () => {
-		await account.createOAuth2Session('google', 'http://127.0.0.1:5173/');
+		let finalPath = '';
+		path.subscribe((value: any) => {
+			finalPath = value;
+			console.log(value);
+		});
+		path / (await account.createOAuth2Session('google', finalPath));
 	},
 	logout: async () => {
 		await account.deleteSessions();

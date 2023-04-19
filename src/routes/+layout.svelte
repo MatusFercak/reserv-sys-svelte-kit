@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { AppwriteServices } from '$lib/appwrite';
-	import { currentAccount } from '$lib/stores';
+	import { currentAccount, path } from '$lib/stores';
 	import '@appwrite.io/pink';
 	import '@appwrite.io/pink-icons';
 	import { onMount } from 'svelte';
@@ -15,6 +15,9 @@
 	}
 
 	onMount(() => {
+		path.set(window.location.href);
+
+		console.log(window.location.href);
 		try {
 			AppwriteServices.getAccount();
 			currentAccount.subscribe((value: any) => {
