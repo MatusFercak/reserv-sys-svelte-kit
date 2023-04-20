@@ -17,9 +17,9 @@ export const CalendarGenerator = {
 	}> => {
 		let result: Array<any> = [];
 
-		const previousMonth: number = new Date(year, month, 0);
-		const currentMonth: number = new Date(year, month + 1, 0);
-		const nextMonth: number = new Date(year, month + 2, 0);
+		const previousMonth: Date = new Date(year, month, 0);
+		const currentMonth: Date = new Date(year, month + 1, 0);
+		const nextMonth: Date = new Date(year, month + 2, 0);
 		const numberOfDaysInPreviousMonth: number = previousMonth.getDate();
 		const numberOfDaysInCurrentMonth: number = currentMonth.getDate();
 		const startingDayOfCurrentMonth: number = new Date(year, month, 1).getDay();

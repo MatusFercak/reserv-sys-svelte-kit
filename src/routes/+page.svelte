@@ -9,21 +9,19 @@
 	let dayToShow: any;
 
 	function nextMonth() {
-		month += 1;
-		if (month == 12) {
+		if (++month > 11) {
 			month = 0;
-			year += 1;
+			year++;
 		}
 	}
-	function previusMonth() {
-		month -= 1;
-		if (month == -1) {
+	function previousMonth(){
+		if (--month < 0) {
 			month = 11;
-			year -= 1;
+			year--;
 		}
 	}
 
-	$: if (month) {
+	$: if (month > -1) { //preto nam nezobrazovalo Januar ;)
 		days = CalendarGenerator.getCalendar(year, month);
 	}
 	$: if (dayToShow) {
@@ -38,10 +36,10 @@
 				<button
 					class="button is-text"
 					on:click={() => {
-						previusMonth();
+						previousMonth();
 					}}
 					><span class="icon-cheveron-left astro-COHSB7B2" />
-					<span class="text u-capitalize astro-COHSB7B2">Previus month</span></button
+					<span class="text u-capitalize astro-COHSB7B2">Previous month</span></button
 				>
 				<div class="is-text u-text-center">
 					<h4 class="heading-level-4">{monthNames[month]} {year}</h4>
