@@ -23,12 +23,8 @@
 		}
 	}
 
-	$: if (month) {
-		days = CalendarGenerator.getCalendar(year, month);
-	}
-	$: if (dayToShow) {
-		currentDay.set(dayToShow);
-	}
+	$: month, (days = CalendarGenerator.getCalendar(year, month));
+	$: dayToShow, currentDay.set(dayToShow);
 </script>
 
 <main class="main-content">
