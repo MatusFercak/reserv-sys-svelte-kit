@@ -7,7 +7,7 @@ const client = new Client();
 const account = new Account(client);
 const databases = new Databases(client);
 
-client.setEndpoint('https://appwrite.rezervujto.online/v1').setProject('reserv-system');
+client.setEndpoint('https://cloud.appwrite.io/v1').setProject('reserv-system');
 
 export const AppwriteServices = {
 	login: async () => {
