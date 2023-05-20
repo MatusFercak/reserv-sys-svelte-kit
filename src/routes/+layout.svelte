@@ -51,7 +51,7 @@
 						</a>
 					{/if}
 				{:else if account == 0}
-					<!-- <a
+					<a
 						on:click={() => {
 							login();
 						}}
@@ -62,8 +62,8 @@
 					>
 						<span class="icon-google astro-6RXD34BR" aria-hidden="true" />
 						<span class="text astro-6RXD34BR">Google Login</span>
-					</a> -->
-					<a
+					</a>
+					<!-- <a
 						href="https://rezervujto.authui.site/"
 						title="Login"
 						rel="noopener noreferrer"
@@ -71,13 +71,13 @@
 					>
 						<span class="icon-google astro-6RXD34BR" aria-hidden="true" />
 						<span class="text astro-6RXD34BR">Login</span>
-					</a>
+					</a> -->
 				{/if}
 			</li>
 			{#if account}
 				{#if account != 0}
 					<li class="buttons-list-item is-not-mobile u-padding-inline-0 astro-6RXD34BR">
-						<!-- <a
+						<a
 							on:click={() => {
 								logout();
 							}}
@@ -87,15 +87,15 @@
 							class="button is-text astro-6RXD34BR"
 						>
 							<span class="text astro-6RXD34BR">Log out</span>
-						</a> -->
-						<a
+						</a>
+						<!-- <a
 							href="https://rezervujto.authui.site/"
 							title="Logout"
 							rel="noopener noreferrer"
 							class="button is-text astro-6RXD34BR"
 						>
 							<span class="text astro-6RXD34BR">Manage account</span>
-						</a>
+						</a> -->
 					</li>
 				{/if}
 			{/if}
