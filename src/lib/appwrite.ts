@@ -16,7 +16,7 @@ export const AppwriteServices = {
 			finalPath = value;
 			console.log(value);
 		});
-		path / (await account.createOAuth2Session('google', finalPath));
+		path / account.createOAuth2Session('google', finalPath);
 	},
 	logout: async () => {
 		await account.deleteSessions();
